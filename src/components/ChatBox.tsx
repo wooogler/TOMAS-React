@@ -163,10 +163,15 @@ const ChatBox = (props: ChatBoxProps, ref: Ref<unknown> | undefined) => {
             throw new Error("Component is null");
           }
         } else if (props.stage === "questionForSelect") {
-          if (props.components) {
+          if (
+            props.components &&
+            props.components.length > 0 &&
+            props.component
+          ) {
             answerForFilter({
               content: inputValue,
               components: props.components,
+              component: props.component,
             }).then((res) => {
               if (res.components && res.components.length !== 0) {
                 dataUpdate(res);

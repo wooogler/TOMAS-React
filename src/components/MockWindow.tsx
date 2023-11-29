@@ -63,6 +63,9 @@ const MockWindow = (props: MockWindowProps) => {
 
   const generateTable = (components: SelectableComponent[]) => {
     let table: TableData[] = [];
+    if (components.length === 0) {
+      return [];
+    }
 
     components.forEach((component) => {
       const row = generateTableRow(component.data, component.i);
@@ -168,7 +171,7 @@ const MockWindow = (props: MockWindowProps) => {
       setOpen("");
     }
     console.log(stage);
-  }, [stage, content, props.component?.description]);
+  }, [stage, content, props.component?.description, props.components?.length]);
 
   const handleConfirmation = (response: string) => {
     props.setIsProcessing(true);
