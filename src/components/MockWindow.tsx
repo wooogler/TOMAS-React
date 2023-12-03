@@ -109,7 +109,7 @@ const MockWindow = (props: MockWindowProps) => {
     data: string | Record<string, string | string[]>,
     i: string
   ) => {
-    let temp = `<tr interactive_i="${i}" class="cursor-pointer hover:bg-slate-900 hover:text-neutral-50 hover:font-bold">`;
+    let temp = `<tr interactive_i="${i}" class="cursor-pointer hover:bg-slate-900 hover:text-neutral-50 font-bold">`;
     if (typeof data === "string") {
       temp += `<td interactive_i="${i}" class="border px-6 py-3">`;
       temp += data;
@@ -147,10 +147,9 @@ const MockWindow = (props: MockWindowProps) => {
       if (props.components) {
         const tableData = generateTable(props.components);
         setHtml(`
-          <table class="table-auto w-full text-md" >
+          <table class="table-auto w-full text-xl" >
             ${tableData
               .map((row) => {
-                console.log(row.html);
                 return row.html;
               })
               .join("")}
@@ -161,7 +160,7 @@ const MockWindow = (props: MockWindowProps) => {
       if (props.isConfirmationEnabled) {
         setOpen("confirm");
       } else {
-        handleConfirmation("YES");
+        handleConfirmation("yes");
       }
     } else if (stage === "questionForInput") {
       setOpen("input");
@@ -170,12 +169,11 @@ const MockWindow = (props: MockWindowProps) => {
     } else if (stage === "") {
       setOpen("");
     }
-    console.log(stage);
-  }, [stage, content, props.component?.description, props.components?.length]);
+  }, [stage, content, props.components?.length]);
 
   const handleConfirmation = (response: string) => {
     props.setIsProcessing(true);
-    if (response === "YES") {
+    if (response === "yes") {
       setConfirmLoadingYes(true);
     } else {
       setConfirmLoadingNo(true);
@@ -366,12 +364,12 @@ const MockWindow = (props: MockWindowProps) => {
           <h2 className='text-2xl leading-loose font-bold'>
             {props.screenDescription}
           </h2>
-          <h2 className='text-2xl leading-loose font-bold'>
+          {/* <h2 className='text-2xl leading-loose font-bold'>
             {props.component?.description}
           </h2>
           <h2 className='text-2xl leading-loose font-bold'>
             {props.component ? props.component.question : content}
-          </h2>
+          </h2> */}
           {stage === "questionForSelect" && (
             <div
               dangerouslySetInnerHTML={{
@@ -383,7 +381,7 @@ const MockWindow = (props: MockWindowProps) => {
           )}
 
           {stage === "" && (
-            <h2 className='text-2xl leading-loose font-bold'>
+            <h2 className='text-3xl leading-loose font-bold'>
               위에서 웹사이트를 선택하세요.
             </h2>
           )}
@@ -394,17 +392,17 @@ const MockWindow = (props: MockWindowProps) => {
             }`}
           >
             <button
-              onClick={() => handleConfirmation("YES")}
+              onClick={() => handleConfirmation("yes")}
               className={`btn btn-outline btn-md text-xl btn-wide flex-1 ${
                 confirmLoadingNo ? "btn-disabled" : ""
               }`}
               disabled={confirmLoadingYes || confirmLoadingNo}
               id='yesButton'
             >
-              네 {confirmLoadingYes && <Loading />}
+              예 {confirmLoadingYes && <Loading />}
             </button>
             <button
-              onClick={() => handleConfirmation("NO")}
+              onClick={() => handleConfirmation("no")}
               className={`btn btn-outline btn-md text-xl btn-wide flex-1 ${
                 confirmLoadingYes ? "btn-disabled" : ""
               }`}

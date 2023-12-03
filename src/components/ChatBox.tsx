@@ -4,7 +4,6 @@ import InputBox, { InputBoxRef } from "./InputBox";
 import {
   ActionComponent,
   answerForInput,
-  answerForSelect,
   confirmAnswer,
   firstOrder,
   AnswerResponse,
@@ -108,10 +107,9 @@ const ChatBox = (props: ChatBoxProps, ref: Ref<unknown> | undefined) => {
     props.setScreenDescription(res.screenDescription || "");
     if (res.component !== undefined) {
       props.setComponent(res.component);
-    } else if (res.components != undefined) {
+    }
+    if (res.components != undefined) {
       props.setComponents(res.components);
-    } else {
-      console.error("No component(s) available!");
     }
     if (res.actionValue) setActionValue(res.actionValue);
     (async () => {
@@ -173,11 +171,7 @@ const ChatBox = (props: ChatBoxProps, ref: Ref<unknown> | undefined) => {
               components: props.components,
               component: props.component,
             }).then((res) => {
-              if (res.components && res.components.length !== 0) {
-                dataUpdate(res);
-              } else {
-                setIsProcessing(false);
-              }
+              dataUpdate(res);
             });
           }
           // setShownChatList([...shownChatList, errorMessage]);

@@ -1,8 +1,8 @@
-const ip = "192.168.0.41";
+const ip = "localhost";
 
 export const test = {
   send: async () => {
-    const response = await fetch(`http://${ip}:8000/test`, {
+    const response = await fetch(`https://${ip}:8000/test`, {
       method: "get",
       headers: {
         "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export const test = {
 };
 
 export const transcribe = async (request: { formData: FormData }) => {
-  const response = fetch(`http://${ip}:8000/api/openai/transcribe`, {
+  const response = fetch(`https://${ip}:8000/api/openai/transcribe`, {
     method: "POST",
     body: request.formData,
   });

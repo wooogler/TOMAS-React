@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
+import fs from "fs";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -30,6 +31,6 @@ export default defineConfig({
   base: "./",
   server: {
     port: 5679,
-    host: true,
+    host: "0.0.0.0", // 외부 접속 허용
   },
 });

@@ -1,8 +1,8 @@
-const ip = "192.168.0.41";
+const ip = "localhost";
 
 export const getChat = async () => {
   console.log("Fetch chats from database...");
-  const response = fetch(`http://${ip}:8000/api/chats`, {
+  const response = fetch(`https://${ip}:8000/api/chats`, {
     method: "GET",
   });
   return (await response).json();
@@ -10,7 +10,7 @@ export const getChat = async () => {
 
 export const sendMessage = async (request: { content: string }) => {
   console.log("Send message...");
-  const response = await fetch(`http://${ip}:8000/api/chats/human`, {
+  const response = await fetch(`https://${ip}:8000/api/chats/human`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -29,7 +29,7 @@ interface NavigateResponse {
 
 export const navigate = async (request: { url: string }) => {
   console.log("Navigate...");
-  const response = await fetch(`http://${ip}:8000/api/chats/navigate`, {
+  const response = await fetch(`https://${ip}:8000/api/chats/navigate`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -78,7 +78,7 @@ export type AnswerResponse = {
 
 export const firstOrder = async (request: { content: string }) => {
   console.log("First order...");
-  const response = await fetch(`http://${ip}:8000/api/chats/order`, {
+  const response = await fetch(`https://${ip}:8000/api/chats/order`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -97,7 +97,7 @@ export const answerForInput = async (request: {
   component: ActionComponent;
 }) => {
   console.log("Answer for input...");
-  const response = await fetch(`http://${ip}:8000/api/chats/answer/input`, {
+  const response = await fetch(`https://${ip}:8000/api/chats/answer/input`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -118,7 +118,7 @@ export const answerForSelect = async (request: {
   component: ActionComponent | null;
 }) => {
   console.log("Answer for select...");
-  const response = await fetch(`http://${ip}:8000/api/chats/answer/select`, {
+  const response = await fetch(`https://${ip}:8000/api/chats/answer/select`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -140,7 +140,7 @@ export const answerForFilter = async (request: {
   components: SelectableComponent[];
 }) => {
   console.log("Answer for filter...");
-  const response = await fetch(`http://${ip}:8000/api/chats/answer/filter`, {
+  const response = await fetch(`https://${ip}:8000/api/chats/answer/filter`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -162,7 +162,7 @@ export const confirmAnswer = async (request: {
   actionValue?: string;
 }) => {
   console.log("Confirm...");
-  const response = await fetch(`http://${ip}:8000/api/chats/confirm`, {
+  const response = await fetch(`https://${ip}:8000/api/chats/confirm`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -180,7 +180,7 @@ export const confirmAnswer = async (request: {
 
 export const removeChat = async () => {
   console.log("Remove the chat...");
-  const response = await fetch(`http://${ip}:8000/api/chats`, {
+  const response = await fetch(`https://${ip}:8000/api/chats`, {
     method: "DELETE",
   });
   return response.json();
