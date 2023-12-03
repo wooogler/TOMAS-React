@@ -1,8 +1,8 @@
-const ip = "7771-39-119-111-95.ngrok-free.app";
+const ip = "lion-supreme-cleanly.ngrok-free.app";
 
 export const test = {
   send: async () => {
-    const response = await fetch(`https://${ip}:8000/test`, {
+    const response = await fetch(`https://${ip}/test`, {
       method: "get",
       headers: {
         "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export const test = {
 };
 
 export const transcribe = async (request: { formData: FormData }) => {
-  const response = fetch(`https://${ip}:8000/api/openai/transcribe`, {
+  const response = fetch(`https://${ip}/api/openai/transcribe`, {
     method: "POST",
     body: request.formData,
   });
