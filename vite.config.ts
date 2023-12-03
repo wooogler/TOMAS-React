@@ -28,7 +28,7 @@ export default defineConfig({
       },
     }),
   ],
-  base: "./",
+  base: "/TOMAS-React/",
   server: {
     port: 5679,
     host: "0.0.0.0", // 외부 접속 허용
