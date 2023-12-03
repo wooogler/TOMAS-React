@@ -1,4 +1,4 @@
-const ip = "localhost";
+const ip = "7771-39-119-111-95.ngrok-free.app";
 
 export const getChat = async () => {
   console.log("Fetch chats from database...");
