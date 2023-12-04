@@ -1,1 +1,1 @@
-{"name":"tomas-react","short_name":"tomas-react","start_url":"/TOMAS-React/","display":"standalone","background_color":"#ffffff","lang":"en","scope":"/TOMAS-React/","icons":[{"src":"/icon-192.png","type":"image/png","sizes":"192x192"},{"src":"/icon-512.png","type":"image/png","sizes":"512x512"}]}
+{"name":"tomas-react","short_name":"tomas-react","start_url":"/","display":"standalone","background_color":"#ffffff","lang":"en","scope":"/","icons":[{"src":"/icon-192.png","type":"image/png","sizes":"192x192"},{"src":"/icon-512.png","type":"image/png","sizes":"512x512"}]}
