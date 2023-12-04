@@ -38,6 +38,12 @@ interface MockWindowProps {
   screenDescription: string;
 }
 
+const speak = (text: string) => {
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = "ko-KR"; // 한국어 설정
+  window.speechSynthesis.speak(utterance);
+};
+
 const MockWindow = (props: MockWindowProps) => {
   const [urlValue, setUrlValue] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
@@ -170,6 +176,13 @@ const MockWindow = (props: MockWindowProps) => {
       setOpen("");
     }
   }, [stage, content, props.components?.length]);
+
+  useEffect(() => {
+    if (props.screenDescription && props.component?.actionType !== "pass") {
+      window.speechSynthesis.cancel();
+      speak(props.screenDescription);
+    }
+  }, [props.screenDescription, props.component?.actionType]);
 
   const handleConfirmation = (response: string) => {
     props.setIsProcessing(true);

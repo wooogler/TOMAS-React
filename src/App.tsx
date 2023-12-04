@@ -28,7 +28,7 @@ function App() {
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
   const [actionValue, setActionValue] = useState<string>("");
   const [open, setOpen] = useState<"confirm" | "input" | "">("");
-  const [isChatShown, setIsChatShown] = useState(true);
+  const [isChatShown, setIsChatShown] = useState(false);
   const [isConfirmationEnabled, setIsConfirmationEnabled] = useState(true);
   const sendRef = useRef<SendRef>(null);
 

@@ -24,7 +24,7 @@ const RecordBtn = (props: {
   const transcribeRecord = async (formData: FormData) => {
     try {
       const data = JSON.parse(await transcribe({ formData }));
-      data.transcription && props.setInputValue(props.inputValue + data.transcription);
+      data.transcription && props.setInputValue(data.transcription);
       setRecordStatus(0);
     } catch (err: any) {
       console.error(err);
@@ -113,7 +113,7 @@ const RecordBtn = (props: {
         )}
       </button>
     </div>
-  )
-}
+  );
+};
 
 export default RecordBtn;
